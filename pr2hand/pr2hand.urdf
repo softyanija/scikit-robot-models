@@ -29,16 +29,16 @@
     <color rgba="0.6 0.6 0.6 1.0"/>
   </material>
   <material name="Caster">
-    <texture filename="package://pr2_description/materials/textures/pr2_caster_texture.png"/>
+    <texture filename="package://pr2hand/materials/textures/pr2_caster_texture.png"/>
   </material>
   <material name="Wheel_l">
-    <texture filename="package://pr2_description/materials/textures/pr2_wheel_left.png"/>
+    <texture filename="package://pr2hand/materials/textures/pr2_wheel_left.png"/>
   </material>
   <material name="Wheel_r">
-    <texture filename="package://pr2_description/materials/textures/pr2_wheel_right.png"/>
+    <texture filename="package://pr2hand/materials/textures/pr2_wheel_right.png"/>
   </material>
   <material name="RollLinks">
-    <texture filename="package://pr2_description/materials/textures/pr2_wheel_left.png"/>
+    <texture filename="package://pr2hand/materials/textures/pr2_wheel_left.png"/>
   </material>
   <!-- DATA SOURCES -->
   <!-- all link offsets, CG, limits are obtained from Function Engineering spreadsheet 090224_link_data.xls unless stated otherwise -->
