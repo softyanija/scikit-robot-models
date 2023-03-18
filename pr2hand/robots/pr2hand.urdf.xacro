@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="pr2hand" >
+
+  <!-- The following included files set up definitions of parts of the robot body -->
+  <xacro:include filename="$(find pr2_description)/urdf/common.xacro" />
+  <!-- PR2 gripper -->
+  <xacro:include filename="$(find pr2_description)/urdf/gripper_v0/gripper_single.urdf.xacro" />
+
+  <!-- Texture projector -->
+  <xacro:include filename="$(find pr2_description)/urdf/sensors/projector_wg6802418.urdf.xacro" />
+  <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
+  <xacro:include filename="$(find pr2_description)/gazebo/gazebo.urdf.xacro" />
+  <!-- materials for visualization -->
+  <xacro:include filename="$(find pr2_description)/urdf/materials.urdf.xacro" />
+  <xacro:include filename="$(find pr2_description)/urdf/base_v0/base.urdf.xacro" />
+
+  <!-- use gripper as base  -->
+  <!-- <xacro:pr2_base_v0 name="base"/> -->
+  <xacro:pr2_gripper_v0 reflect="-1.0" side="r" name="base"
+               screw_reduction="${4.0/1000.0}"
+               gear_ratio="${(729.0/25.0)*(22.0/16.0)}"
+               theta0="${3.6029*M_PI/180.0}"
+               phi0="${29.7089*M_PI/180.0}"
+               t0="${-0.1914/1000.0}"
+               L0="${37.5528/1000.0}"
+               h="${0.0/1000.0}"
+               a="${68.3698/1000.0}"
+               b="${43.3849/1000.0}"
+               r="${91.5/1000.0}" >
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:pr2_gripper_v0>
+               
+</robot>
