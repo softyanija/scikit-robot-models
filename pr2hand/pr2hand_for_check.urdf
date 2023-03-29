@@ -4,24 +4,6 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="pr2hand">
-  <gazebo>
-    <plugin filename="libgazebo_ros_controller_manager.so" name="gazebo_ros_controller_manager">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>1000.0</updateRate>
-    </plugin>
-    <plugin filename="libgazebo_ros_power_monitor.so" name="gazebo_ros_power_monitor_controller">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>1.0</updateRate>
-      <timeout>5</timeout>
-      <powerStateTopic>power_state</powerStateTopic>
-      <powerStateRate>10.0</powerStateRate>
-      <fullChargeCapacity>87.78</fullChargeCapacity>
-      <dischargeRate>-474</dischargeRate>
-      <chargeRate>525</chargeRate>
-      <dischargeVoltage>15.52</dischargeVoltage>
-      <chargeVoltage>16.41</chargeVoltage>
-    </plugin>
-  </gazebo>
   <material name="Blue">
     <color rgba="0.0 0.0 0.8 1.0"/>
   </material>
@@ -58,17 +40,6 @@
   <material name="RollLinks">
     <texture filename="package://pr2_description/materials/textures/pr2_wheel_left.png"/>
   </material>
-  <!-- DATA SOURCES -->
-  <!-- all link offsets, CG, limits are obtained from Function Engineering spreadsheet 090224_link_data.xls unless stated otherwise -->
-  <!-- all link geometry sizes are obtained from Function provided CAD model unless stated otherwise -->
-  <!-- all simplified collision geometry are hand approximated from CAD model, sometimes from respective bounding boxes -->
-  <!-- This is the 'effective' wheel radius. Wheel radius for uncompressed wheel is 0.079.  mp 20080801 -->
-  <!-- <joint name="${side}_gripper_palm_joint" type="fixed"> -->
-  <!--   <xacro:insert_block name="origin"/> -->
-  <!--   <parent link="${parent}"/> -->
-  <!--   <child link="${side}_gripper_palm_link"/> -->
-  <!-- </joint> -->
-  <!-- <link name="${side}_gripper_palm_link"> -->
   <link name="base_link">
     <inertial>
       <mass value="0.58007"/>
@@ -217,6 +188,21 @@
       </geometry>
     </collision>
   </link>
+  <joint name="r_gripper_l_keypoint1_joint" type="revolute">
+    <axis xyz="0 0 1"/>
+    <!-- <origin xyz="${0.09137} ${-0.00495} 0" rpy="0 0 0" /> -->
+    <origin rpy="0 0 0" xyz="0.071 0.0032 0.0"/>
+    <!-- limits on passive finger and finger top joints without
+         transmission are not enforced by safety controllers.
+         The lower/upper limits and are enforced in PR2 simulation and
+         effort and velocity limits are ignored. This is also needed because
+         these joints are declared revolute rather than continuous.-->
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <dynamics damping="0.001"/>
+    <parent link="r_gripper_l_finger_link"/>
+    <child link="r_gripper_l_keypoint1_link"/>
+  </joint>
+  <link name="r_gripper_l_keypoint1_link"/>
   <!-- Finger proximal digit -->
   <joint name="r_gripper_r_finger_joint" type="revolute">
     <axis xyz="0 0 -1"/>
@@ -322,6 +308,21 @@
       </geometry>
     </collision>
   </link>
+  <joint name="r_gripper_r_keypoint1_joint" type="revolute">
+    <axis xyz="0 0 1"/>
+    <!-- <origin xyz="${0.09137} ${-0.00495} 0" rpy="0 0 0" /> -->
+    <origin rpy="0 0 0" xyz="0.071 -0.0032 0.0"/>
+    <!-- limits on passive finger and finger top joints without
+         transmission are not enforced by safety controllers.
+         The lower/upper limits and are enforced in PR2 simulation and
+         effort and velocity limits are ignored. This is also needed because
+         these joints are declared revolute rather than continuous.-->
+    <limit effort="1000.0" lower="0.0" upper="0.548" velocity="0.5"/>
+    <dynamics damping="0.001"/>
+    <parent link="r_gripper_r_finger_link"/>
+    <child link="r_gripper_r_keypoint1_link"/>
+  </joint>
+  <link name="r_gripper_r_keypoint1_link"/>
   <!-- Finger proximal digit -->
   <gazebo reference="r_gripper_l_finger_link">
     <turnGravityOff>true</turnGravityOff>

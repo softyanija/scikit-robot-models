@@ -3,6 +3,7 @@ node [shape=box];
 "base_link" [label="base_link"];
 "r_gripper_l_finger_link" [label="r_gripper_l_finger_link"];
 "r_gripper_l_finger_tip_link" [label="r_gripper_l_finger_tip_link"];
+"r_gripper_l_keypoint1_link" [label="r_gripper_l_keypoint1_link"];
 "r_gripper_led_frame" [label="r_gripper_led_frame"];
 "r_gripper_motor_accelerometer_link" [label="r_gripper_motor_accelerometer_link"];
 "r_gripper_motor_slider_link" [label="r_gripper_motor_slider_link"];
@@ -10,12 +11,15 @@ node [shape=box];
 "r_gripper_r_finger_link" [label="r_gripper_r_finger_link"];
 "r_gripper_r_finger_tip_link" [label="r_gripper_r_finger_tip_link"];
 "r_gripper_l_finger_tip_frame" [label="r_gripper_l_finger_tip_frame"];
+"r_gripper_r_keypoint1_link" [label="r_gripper_r_keypoint1_link"];
 "r_gripper_tool_frame" [label="r_gripper_tool_frame"];
 node [shape=ellipse, color=blue, fontcolor=blue];
 "base_link" -> "r_gripper_l_finger_joint" [label="xyz: 0.07691 0.01 0 \nrpy: 0 -0 0"]
 "r_gripper_l_finger_joint" -> "r_gripper_l_finger_link"
 "r_gripper_l_finger_link" -> "r_gripper_l_finger_tip_joint" [label="xyz: 0.09137 0.00495 0 \nrpy: 0 -0 0"]
 "r_gripper_l_finger_tip_joint" -> "r_gripper_l_finger_tip_link"
+"r_gripper_l_finger_link" -> "r_gripper_l_keypoint1_joint" [label="xyz: 0.071 0.0032 0 \nrpy: 0 -0 0"]
+"r_gripper_l_keypoint1_joint" -> "r_gripper_l_keypoint1_link"
 "base_link" -> "r_gripper_led_joint" [label="xyz: 0.0513 0 0.0244 \nrpy: 0 -0 0"]
 "r_gripper_led_joint" -> "r_gripper_led_frame"
 "base_link" -> "r_gripper_motor_accelerometer_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
@@ -30,6 +34,8 @@ node [shape=ellipse, color=blue, fontcolor=blue];
 "r_gripper_r_finger_tip_joint" -> "r_gripper_r_finger_tip_link"
 "r_gripper_r_finger_tip_link" -> "r_gripper_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
 "r_gripper_joint" -> "r_gripper_l_finger_tip_frame"
+"r_gripper_r_finger_link" -> "r_gripper_r_keypoint1_joint" [label="xyz: 0.071 -0.0032 0 \nrpy: 0 -0 0"]
+"r_gripper_r_keypoint1_joint" -> "r_gripper_r_keypoint1_link"
 "base_link" -> "r_gripper_tool_joint" [label="xyz: 0.18 0 0 \nrpy: 0 -0 0"]
 "r_gripper_tool_joint" -> "r_gripper_tool_frame"
 }

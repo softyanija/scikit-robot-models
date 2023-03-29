@@ -9,13 +9,11 @@
   <!-- Texture projector -->
   <xacro:include filename="$(find pr2_description)/urdf/sensors/projector_wg6802418.urdf.xacro" />
   <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
-  <xacro:include filename="$(find pr2_description)/gazebo/gazebo.urdf.xacro" />
+  <!-- <xacro:include filename="$(find pr2_description)/gazebo/gazebo.urdf.xacro" /> -->
   <!-- materials for visualization -->
   <xacro:include filename="$(find pr2_description)/urdf/materials.urdf.xacro" />
-  <xacro:include filename="$(find pr2_description)/urdf/base_v0/base.urdf.xacro" />
 
   <!-- use gripper as base  -->
-  <!-- <xacro:pr2_base_v0 name="base"/> -->
   <xacro:pr2_gripper_v0 reflect="-1.0" side="r" name="base"
                screw_reduction="${4.0/1000.0}"
                gear_ratio="${(729.0/25.0)*(22.0/16.0)}"
