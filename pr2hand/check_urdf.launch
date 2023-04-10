@@ -1,0 +1,12 @@
+<launch>
+
+  <include file="$(find urdf_tutorial)/launch/display.launch" >
+    <arg name="model" value="pr2hand_for_check.urdf" />
+    <!-- <arg name="rvizconfig" value="$config/urdf.rviz" /> -->
+  </include>
+
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
+  <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /> -->
+   <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> -->
+
+</launch>
