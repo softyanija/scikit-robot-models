@@ -4,6 +4,7 @@
 <!-- |    EDITING THIS FILE BY HAND IS NOT RECOMMENDED                                 | -->
 <!-- =================================================================================== -->
 <robot name="pr2hand">
+  <!-- generic simulator_gazebo plugins for starting mechanism control, ros time, ros battery -->
   <material name="Blue">
     <color rgba="0.0 0.0 0.8 1.0"/>
   </material>
@@ -97,6 +98,20 @@
     <child link="r_gripper_tool_frame"/>
   </joint>
   <link name="r_gripper_tool_frame"/>
+  <joint name="r_gripper_l_keypoint2_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 0" xyz="0.119 0.007 0.0"/>
+    <parent link="base_link"/>
+    <child link="r_gripper_l_keypoint2_link"/>
+  </joint>
+  <link name="r_gripper_l_keypoint2_link"/>
+  <joint name="r_gripper_r_keypoint2_joint" type="fixed">
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 0" xyz="0.119 -0.007 0.0"/>
+    <parent link="base_link"/>
+    <child link="r_gripper_r_keypoint2_link"/>
+  </joint>
+  <link name="r_gripper_r_keypoint2_link"/>
   <!-- actuated motor screw joint -->
   <link name="r_gripper_motor_slider_link">
     <inertial>
@@ -305,6 +320,8 @@
       <origin rpy="3.141592653589793 0 0" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://pr2_description/meshes/gripper_v0/l_finger_tip.stl"/>
+        
+NN        
       </geometry>
     </collision>
   </link>
